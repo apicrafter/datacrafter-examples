@@ -1,0 +1,31 @@
+version: 1
+project-id: ee0cd7af-cf5e-4d1b-800a-fb9e3363a61b
+project-name: rknopenrd
+
+extractor:
+  type: file-zip
+  method: urlbypattern
+  mode: singlefile
+  config:
+    prefix: https://rkn.gov.ru/opendata/7705846236-OperatorsPD/
+    data_prefix: /opendata/7705846236-OperatorsPD/data-
+
+
+processor:
+  config:
+    type: zipxml
+    tagname: record
+  typemap:
+    income_date: date
+    startdate: date
+    enter_date: date
+    stop_date: date
+    end_order_date: date
+    enter_order_date: date
+
+destination:
+  type: file-jsonl
+#  compress: gz
+  storage: local
+  fileprefix: rknoperd
+

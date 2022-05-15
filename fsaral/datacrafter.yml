@@ -1,0 +1,14 @@
+version: 1
+project-id: ad1c678f-df5e-411b-800a-fb9e6460a65
+project-name: fsa-ral
+
+extractor:
+  type: api
+  method: apibackuper
+  mode: full
+ 
+
+destination:
+  type: file-jsonl
+  storage: local
+  filename: fsa-ral.jsonl

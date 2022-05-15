@@ -1,0 +1,40 @@
+version: 1
+project-id: ae0cd7af-cf5e-4d1b-800a-fb9e3363a61b
+project-name: fnstaxoffence
+
+extractor:
+  type: file-zip
+  method: urlbypattern
+  mode: singlefile
+  config:
+    prefix: https://www.nalog.ru/opendata/7707329152-taxoffence/
+    data_prefix: https://data.nalog.ru/opendata/7707329152-taxoffence/data-
+
+
+processor:
+  config:
+    type: zipxml
+    tagname: Документ
+  keymap:
+    type: names
+    fields:
+      Документ: document
+      НаимОрг: orgname
+      ИННЮЛ: inn
+      СведНП: org
+      СведНаруш: violation
+      СумШтраф: finesum
+      ИдДок: id
+      ДатаДок: date_doc
+      ДатаСост: date_formed
+  typemap:
+    violation.finesum: float
+    date_formed: datetime
+    date_doc: datetime
+
+destination:
+  type: file-bson
+  compress: gz
+  storage: local
+  fileprefix: fnstaxoffence
+

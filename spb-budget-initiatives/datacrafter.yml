@@ -1,0 +1,17 @@
+version: 1
+project-id: ce0cd7af-df5e-411b-800a-fb9e6460a61
+project-name: spb-budget-initiatives
+
+extractor:
+  type: apig
+  method: apibackuper
+  mode: incremental
+  config:
+    date-fields:
+      - created_at
+
+destination:
+  type: file-bson
+  storage: local
+  compress: zip
+  fileprefix: spb-budget-initiatives

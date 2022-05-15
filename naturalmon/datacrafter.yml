@@ -1,0 +1,23 @@
+version: 1
+project-id: ee0cd7af-cf5e-4d1b-800a-fb9e3363a61b
+project-name: naturalmon
+
+extractor:
+  type: file-xml
+  method: url
+  mode: singlefile
+  config:
+    url: http://fas.gov.ru/api/naturalmonopolies/
+
+
+processor:
+  config:
+    type: xml
+    tagname: record
+
+destination:
+  type: file-bson
+  compress: xz
+  storage: local
+  fileprefix: naturalmon
+

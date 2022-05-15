@@ -1,0 +1,22 @@
+version: 1
+project-id: ce0cd7af-df5e-411b-800a-fb9e6460a6f1
+project-name: wooddeals
+
+extractor:
+  type: api
+  method: apibackuper
+  mode: incremental
+
+
+processor:
+  autoid: True
+  autoindex: True  
+  autotype: True
+  autoindex_mode: uniq,dict
+    
+
+destination:
+  type: file-bson
+  storage: local
+  compress: gzip
+  fileprefix: wooddeals

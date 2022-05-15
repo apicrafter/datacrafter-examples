@@ -1,0 +1,24 @@
+version: 1
+project-id: ae0cd7af-cf5e-4d1b-800a-fb9e6460a61b
+project-name: reestrgp
+
+extractor:
+  type: file-csv
+  method: urlbypattern
+  mode: singlefile
+  config:
+    prefix: http://fas.gov.ru/opendata/7703516539-reestrgp
+    data_prefix: http://fas.gov.ru/opendata/7703516539-reestrgp/data-
+
+processor:
+  config:
+    delimiter: ","
+    quotechar: '"'
+    encoding: utf8
+
+destination:
+  type: file-jsonl
+  compress: gz
+  storage: local
+  fileprefix: reestrgp
+

@@ -1,0 +1,27 @@
+version: 1
+project-id: ee22d7af-af5e-ad1b-a00a-fb9e3363a61b
+project-name: eduorgslic
+
+extractor:
+  type: file-zip
+  method: url
+  mode: singlefile
+  config:
+    url: https://islod.obrnadzor.gov.ru/rlic/opendata/
+
+
+processor:
+  config:    
+    type: zipxml
+    tagname: license
+  typemap:
+    dateLicDoc: datetime
+    dateEnd: datetime
+
+
+destination:
+  type: file-jsonl
+  compress: gz
+  storage: local
+  fileprefix: eduorgslic
+

@@ -1,0 +1,25 @@
+version: 1
+project-id: ee0cd7af-cf5e-4d1b-800a-fb9e3363a61b
+project-name: stroymosdhouse
+
+extractor:
+  type: file-json
+  method: url
+  mode: singlefile
+  config:
+    url: https://stroi.mos.ru/dhouse.json
+
+
+processor:
+  config:
+    type: json
+  typemap:
+    ID_rayon: int
+    ID_okrug: int
+
+destination:
+  type: file-jsonl
+  compress: gz
+  storage: local
+  fileprefix: dhouse
+

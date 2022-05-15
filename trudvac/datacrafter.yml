@@ -1,0 +1,22 @@
+version: 1
+project-id: de0cd7af-df5e-dd1b-800a-fb9e6460a61b
+project-name: trudvac
+
+extractor:
+  type: file-xml
+  method: urlbypattern
+  mode: singlefile
+  config:
+    prefix: https://trudvsem.ru/opendata
+    data_prefix: http://opendata.trudvsem.ru/7710538364-vacancy/
+    delimiter: ","
+    quotechar: '"'
+
+processor:
+  apply: cleanup.py
+
+destination:
+  type: file-datapackage
+  storage: local
+  fileprefix: trudvac
+

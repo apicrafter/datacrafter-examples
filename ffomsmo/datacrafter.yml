@@ -1,0 +1,37 @@
+version: 1
+project-id: de0cd7af-df5e-411b-800a-fb9e6460a61
+project-name: ffomsmo
+options:
+  clean_storage: True
+  compress_temp: True
+
+extractor:
+  type: file-xls
+  method: url
+  mode: singlefile
+  config:
+    url: http://www.ffoms.ru/upload/register_documents_tmp/%D0%A1%D0%9C%D0%9E-%D0%9F%D0%BE%D1%80%D1%82%D0%B0%D0%BB.xls
+
+processor:
+  config:
+    start_line: 1
+    autoid: True
+    autotype: True
+    autoindex: True
+    autoindex_mode: uniq,dict
+    keys: territory,years,id,kpp,fullname,shortname,leader_surname,leader_firstname,leader_midname,phone,fax,email,numlic,lic_date,licend_date,functions,smoreg_date
+#  keymap:
+#    type: position
+#  typemap:
+#    lic_date: datetime
+#    licend_date: datetime
+  custom:
+     type: script
+     code: scripts/cleaner.py
+
+
+destination:
+  type: file-jsonl
+  storage: local
+  compress: zip
+  fileprefix: ffomsmo

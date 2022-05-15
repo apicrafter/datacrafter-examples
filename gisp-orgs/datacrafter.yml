@@ -1,0 +1,18 @@
+version: 1
+project-id: ce0cd7af-df5e-411b-800a-fb9e6460a64
+project-name: gisp-orgs
+
+extractor:
+  type: api
+  method: apibackuper
+  mode: full
+
+processor:
+  config:
+    autoid: True
+
+destination:
+  type: file-jsonl
+  storage: local
+  compress: zip
+  fileprefix: gisp-orgs
