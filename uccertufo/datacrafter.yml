@@ -1,0 +1,21 @@
+version: 1
+project-id: ce0cd7af-ef5e-411b-800a-fb9e6460a64
+project-name: uccertufo
+
+extractor:
+  type: api
+  method: apibackuper
+  mode: full
+
+processor:
+  config:
+    autoid: True
+  custom:
+     type: script
+     code: scripts/cleaner.py
+
+destination:
+  type: file-jsonl
+  storage: local
+  compress: zip
+  fileprefix: uccertufo
