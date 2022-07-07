@@ -1,0 +1,28 @@
+version: 1
+project-id: ee0cd7af-cf5e-4d1b-800a-fb9e3363a111
+project-name: itregistry
+
+extractor:
+  type: file-xls
+  method: urlbypattern
+  mode: singlefile
+  config:
+    prefix: https://digital.gov.ru/ru/activity/govservices/1/
+    data_prefix: /uploaded/files/
+
+processor:
+  config:
+    start_line: 1
+    autoid: True
+    autotype: True
+    autoindex: True
+    autoindex_mode: uniq,dict
+    keys: regnum,date_reg,fullname,ogrn,inn,date_gosaccred,decision_num,date_change,changes_text,status
+
+
+destination:
+  type: file-jsonl
+#  compress: zip
+  storage: local
+  fileprefix: data
+

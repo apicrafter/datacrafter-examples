@@ -1,28 +1,23 @@
 version: 1
 project-id: ee0cd7af-cf5e-4d1b-800a-fb9e3363a61b
-project-name: stroymosdhouse
+project-name: itbenefits
 
 extractor:
   type: file-json
   method: url
   mode: singlefile
   config:
-    url: https://stroi.mos.ru/dhouse.json
+    url: https://gu-st.ru/landings-st/assets/json/ipoteka/orgs.json
 
 
 processor:
   config:
+    tagname: data
     type: json
-  typemap:
-    ID_rayon: int
-    ID_okrug: int
-  custom:
-     type: script
-     code: scripts/process.py
 
 destination:
   type: file-jsonl
-  compress: gz
+#  compress: zip
   storage: local
-  fileprefix: dhouse
+  fileprefix: data
 

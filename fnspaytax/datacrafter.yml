@@ -35,5 +35,5 @@ destination:
   type: file-bson
   compress: xz
   storage: local
-  fileprefix: reestrgp
+  fileprefix: fnspaytax
 

@@ -1,0 +1,27 @@
+version: 1
+project-id: aaaaaaaa-cf5e-4d1b-800a-fb9e3363a111
+project-name: softregistry
+
+extractor:
+  type: file-xlsx
+  method: url
+  mode: singlefile
+  config:
+    url: https://reestr.digital.gov.ru/reestr/?export=list
+
+processor:
+  config:
+    start_line: 6
+    autoid: True
+    autotype: True
+    autoindex: True
+    autoindex_mode: uniq,dict
+    keys: regnum,name,altnames,class,regcodes,date_excluded,doc_url,has_hearing_support,has_vision_support,pp325complience,owner_name,owner_short_name,owner_status,inn,ogrn,rights_info,decision_num,date_decision,decision_url,request_num,date_request_reg
+
+
+destination:
+  type: file-jsonl
+#  compress: zip
+  storage: local
+  fileprefix: data
+
