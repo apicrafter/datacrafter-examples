@@ -15,7 +15,9 @@ processor:
      code: scripts/cleaner.py
 
 destination:
-  type: file-jsonl
-  storage: local
-  compress: zip
-  fileprefix: uccertufo
+  type: arangodb
+  connstr: http://127.0.0.1:8529
+  dbname: hubofdata
+  tablename: cert
+  username: apicrafter
+  password: 
