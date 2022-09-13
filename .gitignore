@@ -1,4 +1,6 @@
-
+*.xls
+*.xlsx
+*.bson
 *.zip
 *.log
 *.json

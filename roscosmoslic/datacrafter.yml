@@ -1,0 +1,23 @@
+version: 1
+project-id: ee0cd7af-cf5e-4d1b-800a-fb9e3363a61b
+project-name: roscosmos-licenses
+
+extractor:
+  type: file-json
+  method: url
+  mode: singlefile
+  config:
+    url: https://licenses.roscosmos.ru/api/public/licenses
+
+
+processor:
+  config:
+    type: json
+
+destination:
+  type: meilisearch
+  connstr: http://127.0.0.1:7700
+  indexname: roscosmos
+  reset: True
+  incremental: True
+  token: mysecretkey

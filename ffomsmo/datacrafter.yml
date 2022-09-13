@@ -31,7 +31,9 @@ processor:
 
 
 destination:
-  type: file-jsonl
-  storage: local
-  compress: zip
-  fileprefix: ffomsmo
+  type: meilisearch
+  connstr: http://127.0.0.1:7700
+  indexname: ffomsmo
+  reset: True
+  incremental: True
+  token: mysecretkey

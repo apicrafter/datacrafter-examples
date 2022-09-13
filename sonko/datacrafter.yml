@@ -1,0 +1,35 @@
+version: 1
+project-id: de0cd7af-df5e-411b-800a-fb9e6460a61
+project-name: sonko
+options:
+  clean_storage: True
+  compress_temp: True
+
+extractor:
+  type: file-xlsx
+  method: url
+  mode: singlefile
+  config:
+    url: https://data.economy.gov.ru/files/sonko_organizations.xlsx
+
+processor:
+  config:
+    start_line: 3
+    autoid: True
+    autotype: True
+    autoindex: True
+    autoindex_mode: uniq,dict
+    keys: inn,fullname,shortname,regaddr,ogrn,orgform,okved,sonko_status,ngo_status,inclusion_reason,supporter_name,date_support,date_inclusion
+  custom:
+     type: script
+     code: scripts/cleaner.py
+  typemap:
+    date_support: datetime
+    date_inclusion: datetime
+
+
+destination:
+  type: file-bson
+#  compress: zip
+  storage: local
+  fileprefix: data

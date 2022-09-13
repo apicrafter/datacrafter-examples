@@ -20,8 +20,9 @@ processor:
 
 
 destination:
-  type: file-jsonl
-  compress: gz
-  storage: local
-  fileprefix: eduorgslic
-
+  type: meilisearch
+  connstr: http://127.0.0.1:7700
+  indexname: eduorgs
+  reset: True
+  incremental: True
+  token: mysecretkey
